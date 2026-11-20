@@ -3,7 +3,7 @@ import pygame
 
 from util.point import Point
 
-RADII: list[int] = [24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4]
+RADII: list[int] = [10, 8, 6, 4]
 
 
 class Worm:
@@ -14,11 +14,12 @@ class Worm:
         self.base_radii = RADII.copy()
 
         for i, radius in enumerate(RADII):
-            point: Point = Point(radius, f"gray{i+67}")
+            point: Point = Point(radius, f"cyan{i+1}")
             point.position = pygame.Vector2(100 - i * 20, 100)
             self.points.append(point)
 
     def draw_worm(self, screen: pygame.Surface):
+        # TODO: This should be autonomous
         mouse_pos = pygame.mouse.get_pos()
         # We need to draw the head at the mouse position
         pygame.draw.circle(
